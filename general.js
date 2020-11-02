@@ -3,6 +3,10 @@ var variable_2 = NaN;
 var variable_function = '';
 var valueOnScreen = $('#number-display').text();
 var valueString = '';
+var objFunctions = {add:add,
+					subtract:subtract,
+					multiply:multiply,
+					divide:divide};
 
 function onClear(){
 
@@ -52,15 +56,7 @@ function onEquals(){
 		return
 	}
 
-	if(variable_function=='add'){
-		operator(add, parseFloat(variable_1), parseFloat(variable_2));
-	}else if(variable_function=='subtract'){
-		operator(subtract, parseFloat(variable_1), parseFloat(variable_2));
-	}else if(variable_function=='multiply'){
-		operator(multiply, parseFloat(variable_1), parseFloat(variable_2));
-	}else if(variable_function=='divide'){
-		operator(divide, parseFloat(variable_1), parseFloat(variable_2));
-	}
+	operator(objFunctions[variable_function], parseFloat(variable_1), parseFloat(variable_2));
 }
 
 function operator(function_test, a, b){
@@ -111,3 +107,6 @@ $('#equals').on('click', function(e){
 $('#clear').on('click', function(){
 	onClear();
 })
+
+
+console.log(objFunctions['add']);
